@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podium Finishes – Vladimir Andrei | Kart Racer</title>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Back button styling */
+        .back-button-container {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #23A7B9, #1a9fb5);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Roboto', sans-serif;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #A61D1A, #8b1513);
+            transform: translateX(-8px);
+            box-shadow: 0 8px 24px rgba(35, 167, 185, 0.3);
+        }
+
+        .back-button:active {
+            transform: translateX(-4px) scale(0.98);
+        }
+
+        /* Podium cards */
+        .podium-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+        }
+
+        .podium-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 48px;
+            font-weight: 700;
+            color: #23A7B9;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .podium-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .podium-card {
+            background: rgba(35, 167, 185, 0.05);
+            border: 2px solid #23A7B9;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .podium-card:nth-child(1) { animation-delay: 0.1s; }
+        .podium-card:nth-child(2) { animation-delay: 0.2s; }
+        .podium-card:nth-child(3) { animation-delay: 0.3s; }
+        .podium-card:nth-child(4) { animation-delay: 0.4s; }
+        .podium-card:nth-child(5) { animation-delay: 0.5s; }
+        .podium-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .podium-card:hover {
+            background: rgba(35, 167, 185, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(35, 167, 185, 0.2);
+            border-color: #A61D1A;
+        }
+
+        .podium-badge {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: linear-gradient(135deg, #A61D1A, #ff4444);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .podium-card h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 20px;
+            color: #e8e8e8;
+            margin: 20px 0 15px 0;
+        }
+
+        .podium-card p {
+            color: #a0a0a0;
+            margin: 10px 0;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        .podium-card strong {
+            color: #23A7B9;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .podium-title {
+                font-size: 32px;
+            }
+
+            .podium-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Podium Container -->
+    <div class="podium-container">
+        <h1 class="podium-title">Multiple Podium Finishes</h1>
+
+        <div class="podium-grid">
+            <div class="podium-card">
+                <div class="podium-badge">1st Place</div>
+                <h3>AMC Kart Championship 2023</h3>
+                <p><strong>Date:</strong> June 15, 2023</p>
+                <p><strong>Track:</strong> National Karting Circuit</p>
+                <p><strong>Details:</strong> Dominant performance with fastest lap and consistent pace throughout the season.</p>
+            </div>
+
+            <div class="podium-card">
+                <div class="podium-badge">2nd Place</div>
+                <h3>Regional Sprint Championship</h3>
+                <p><strong>Date:</strong> May 20, 2023</p>
+                <p><strong>Track:</strong> Eastern Regional Track</p>
+                <p><strong>Details:</strong> Strong race execution with strategic overtaking maneuvers.</p>
+            </div>
+
+            <div class="podium-card">
+                <div class="podium-badge">3rd Place</div>
+                <h3>VMAX No Limits Final</h3>
+                <p><strong>Date:</strong> April 10, 2023</p>
+                <p><strong>Track:</strong> Local 2 Circuit</p>
+                <p><strong>Details:</strong> Excellent recovery from mid-race incident to secure podium.</p>
+            </div>
+
+            <div class="podium-card">
+                <div class="podium-badge">1st Place</div>
+                <h3>Winter Cup 2022</h3>
+                <p><strong>Date:</strong> December 3, 2022</p>
+                <p><strong>Track:</strong> Winter Circuit</p>
+                <p><strong>Details:</strong> Perfect race management in challenging weather conditions.</p>
+            </div>
+
+            <div class="podium-card">
+                <div class="podium-badge">2nd Place</div>
+                <h3>Summer Series Round 3</h3>
+                <p><strong>Date:</strong> August 18, 2022</p>
+                <p><strong>Track:</strong> Southern Track</p>
+                <p><strong>Details:</strong> Competitive performance with multiple position changes.</p>
+            </div>
+
+            <div class="podium-card">
+                <div class="podium-badge">1st Place</div>
+                <h3>Spring Championship</h3>
+                <p><strong>Date:</strong> March 25, 2022</p>
+                <p><strong>Track:</strong> Central Circuit</p>
+                <p><strong>Details:</strong> Fastest lap holder with commanding lead throughout the race.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
