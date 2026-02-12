@@ -6,29 +6,28 @@
     <title>Racing Gallery – Vladimir Andrei | Kart Racer</title>
     
     <!-- ========== EXTERNAL LIBRARIES ========== -->
-    <!-- Font Awesome Icons - pentru iconițe (săgeți, X, etc) -->
+    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
-    <!-- Google Fonts - Space Mono (titluri) și Roboto (text) -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Link la style.css general (din index.html) -->
+    <!-- Link la style.css general -->
     <link rel="stylesheet" href="style.css">
     
     <!-- ========== CUSTOM STYLES PENTRU GALERIE ========== -->
     <style>
-        /* ========== BACK BUTTON - Butonul de întoarcere la CV ========== */
+        /* ========== BACK BUTTON ========== */
         .back-button-container {
             text-align: center;
             padding: 40px 20px;
             background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
         }
 
-        /* Stilul butonului */
         .back-button {
-            background: linear-gradient(135deg, #23A7B9, #1a9fb5); /* Gradient teal */
+            background: linear-gradient(135deg, #23A7B9, #1a9fb5);
             color: white;
             border: none;
             padding: 14px 32px;
@@ -44,60 +43,128 @@
             text-decoration: none;
         }
 
-        /* Hover effect - se schimbă în roșu și se mișcă */
         .back-button:hover {
-            background: linear-gradient(135deg, #A61D1A, #8b1513); /* Gradient roșu */
-            transform: translateX(-8px); /* Se mișcă la stânga */
-            box-shadow: 0 8px 24px rgba(35, 167, 185, 0.3); /* Glow effect */
+            background: linear-gradient(135deg, #A61D1A, #8b1513);
+            transform: translateX(-8px);
+            box-shadow: 0 8px 24px rgba(35, 167, 185, 0.3);
         }
 
-        /* Click effect */
         .back-button:active {
             transform: translateX(-4px) scale(0.98);
         }
 
-        /* ========== GALLERY CONTAINER - Containerul principal ========== */
+        /* ========== GALLERY CONTAINER ========== */
         .gallery-container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 60px 20px;
             background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
             min-height: 100vh;
         }
 
-        /* Titlul galeriei */
-        .gallery-title {
-            font-family: 'Space Mono', monospace; /* Font monospace pentru titlu */
-            font-size: 48px;
+        /* Titlul principal */
+        .gallery-main-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 56px;
             font-weight: 700;
-            color: #23A7B9; /* Teal color */
+            color: #23A7B9;
             text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .gallery-subtitle {
+            text-align: center;
+            color: #999;
+            font-size: 16px;
+            margin-bottom: 80px;
+            font-family: 'Roboto', sans-serif;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        /* ========== SECTION CONTAINER ========== */
+        .gallery-section {
+            margin-bottom: 100px;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .gallery-section:nth-child(1) { animation-delay: 0.3s; }
+        .gallery-section:nth-child(2) { animation-delay: 0.5s; }
+        .gallery-section:nth-child(3) { animation-delay: 0.7s; }
+
+        /* ========== SECTION HEADER ========== */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
             margin-bottom: 50px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid rgba(35, 167, 185, 0.3);
+            position: relative;
+        }
+
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            height: 2px;
+            width: 0;
+            background: linear-gradient(90deg, #23A7B9, #A61D1A);
+            animation: expandWidth 0.8s ease forwards;
+        }
+
+        .section-icon {
+            font-size: 40px;
+            color: #23A7B9;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 36px;
+            font-weight: 700;
+            color: #23A7B9;
             text-transform: uppercase;
             letter-spacing: 2px;
         }
 
-        /* ========== GALLERY GRID - Grid-ul cu imagini ========== */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* 3 coloane pe desktop, responsive */
-            gap: 30px; /* Spațiu între imagini */
-            margin-bottom: 40px;
+        .section-count {
+            margin-left: auto;
+            background: rgba(35, 167, 185, 0.1);
+            color: #23A7B9;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            border: 1px solid rgba(35, 167, 185, 0.3);
         }
 
-        /* ========== GALLERY ITEM - Fiecare imagine din galerie ========== */
+        /* ========== GALLERY GRID ========== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        /* ========== GALLERY ITEM ========== */
         .gallery-item {
             position: relative;
-            overflow: hidden; /* Ascunde ce depășește */
-            border-radius: 12px; /* Colțuri rotunde */
-            animation: fadeInUp 0.6s ease forwards; /* Animație de apariție */
+            overflow: hidden;
+            border-radius: 12px;
+            animation: fadeInUp 0.6s ease forwards;
             background: #1a1a1a;
             border: 2px solid #2a2a2a;
             transition: all 0.3s ease;
-            cursor: pointer; /* Cursor de click */
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            group: 'item';
         }
 
-        /* Delay-uri pentru animație (fiecare imagine apare cu întârziere) */
         .gallery-item:nth-child(1) { animation-delay: 0.1s; }
         .gallery-item:nth-child(2) { animation-delay: 0.2s; }
         .gallery-item:nth-child(3) { animation-delay: 0.3s; }
@@ -105,119 +172,117 @@
         .gallery-item:nth-child(5) { animation-delay: 0.5s; }
         .gallery-item:nth-child(6) { animation-delay: 0.6s; }
 
-        /* ========== IMAGE WRAPPER - Container pentru imagine ========== */
+        /* ========== IMAGE WRAPPER ========== */
         .gallery-image-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 100%; /* Aspect ratio 1:1 (pătrat) */
+            padding-bottom: 100%;
             overflow: hidden;
         }
 
-        /* ========== ACTUAL IMAGE - Imaginea în sine ========== */
+        /* ========== ACTUAL IMAGE ========== */
         .gallery-image {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Umple containerul fără distorsiune */
+            object-fit: cover;
             transition: all 0.4s ease;
         }
 
-        /* ========== HOVER EFFECTS - Efecte la trecerea mouse-ului ========== */
+        /* ========== PLAY BUTTON OVERLAY ========== */
+        .play-button-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            z-index: 3;
+        }
+
+        /* Play button */
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: rgba(166, 29, 26, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            color: white;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(166, 29, 26, 0.5);
+        }
+
+        /* ========== HOVER EFFECTS ========== */
         .gallery-item:hover {
-            border-color: #23A7B9; /* Border devine teal */
-            box-shadow: 0 8px 24px rgba(35, 167, 185, 0.3); /* Glow effect */
-            transform: translateY(-8px); /* Se ridică ușor */
+            border-color: #23A7B9;
+            box-shadow: 0 12px 32px rgba(35, 167, 185, 0.4);
+            transform: translateY(-12px);
         }
 
-        /* Imaginea se mărește și se luminează la hover */
         .gallery-item:hover .gallery-image {
-            transform: scale(1.1); /* Zoom 10% */
-            filter: brightness(1.1); /* Devine mai luminoasă */
+            transform: scale(1.12);
+            filter: brightness(1.15);
         }
 
-        /* ========== GALLERY LABEL - Text pe imagine ========== */
+        .gallery-item:hover .play-button {
+            transform: scale(1.2);
+            background: rgba(166, 29, 26, 1);
+            box-shadow: 0 16px 40px rgba(166, 29, 26, 0.8);
+        }
+
+        .gallery-item:hover .play-button-overlay {
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        /* ========== GALLERY LABEL ========== */
         .gallery-label {
             position: absolute;
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent); /* Gradient negru */
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
             color: #23A7B9;
-            padding: 20px;
-            font-size: 16px;
+            padding: 24px;
+            font-size: 15px;
             font-weight: 600;
-            transform: translateY(100%); /* Inițial ascuns jos */
+            transform: translateY(100%);
             transition: all 0.3s ease;
+            z-index: 2;
+            font-family: 'Roboto', sans-serif;
         }
 
-        /* La hover, label-ul apare */
         .gallery-item:hover .gallery-label {
             transform: translateY(0);
         }
 
-        /* ========== LIGHTBOX MODAL - Fereastra mare pentru imagine ========== */
-        .lightbox {
-            display: none; /* Inițial ascuns */
-            position: fixed; /* Rămâne pe loc la scroll */
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.95); /* Fundal negru semi-transparent */
-            z-index: 1000; /* Deasupra tuturor */
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Când e activ, lightbox-ul se arată */
-        .lightbox.active {
-            display: flex;
-        }
-
-        /* Container pentru imaginea din lightbox */
-        .lightbox-content {
-            position: relative;
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 12px;
-            overflow: hidden;
-        }
-
-        /* Imaginea din lightbox */
-        .lightbox-image {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        /* Butonul de închidere (X) */
-        .lightbox-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #A61D1A; /* Roșu */
-            color: white;
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%; /* Circular */
-            font-size: 24px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        /* Hover pe butonul de închidere */
-        .lightbox-close:hover {
-            background: #23A7B9; /* Se schimbă în teal */
-            transform: scale(1.1);
+        /* ========== SECTION DIVIDER ========== */
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(35, 167, 185, 0.3), transparent);
+            margin: 80px 0;
         }
 
         /* ========== ANIMAȚII ========== */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -229,169 +294,198 @@
             }
         }
 
-        /* ========== RESPONSIVE DESIGN - Pentru mobile ========== */
+        @keyframes expandWidth {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        /* ========== RESPONSIVE DESIGN ========== */
         @media (max-width: 768px) {
-            .gallery-title {
-                font-size: 32px;
+            .gallery-main-title {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 24px;
             }
 
             .gallery-grid {
-                grid-template-columns: 1fr; /* O coloană pe mobile */
+                grid-template-columns: 1fr;
                 gap: 20px;
             }
 
-            .lightbox-content {
-                max-width: 95%;
-                max-height: 80%;
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .section-count {
+                margin-left: 0;
+            }
+
+            .play-button {
+                width: 60px;
+                height: 60px;
+                font-size: 30px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- ========== BACK BUTTON - Buton de întoarcere ========== -->
+    <!-- ========== BACK BUTTON ========== -->
     <div class="back-button-container">
         <a href="index.html" class="back-button">
             <i class="fas fa-arrow-left"></i> Back to CV
         </a>
     </div>
 
-    <!-- ========== GALLERY CONTAINER - Containerul principal ========== -->
+    <!-- ========== GALLERY CONTAINER ========== -->
     <div class="gallery-container">
-        <h1 class="gallery-title">Racing Gallery</h1>
+        <h1 class="gallery-main-title">Racing Gallery</h1>
+        <p class="gallery-subtitle">Explore my racing journey across multiple platforms</p>
 
-        <!-- ========== GALLERY GRID - Grid-ul cu imagini ========== -->
-        <div class="gallery-grid">
-            
-            <!-- ========== ITEM 1 - PRIMA IMAGINE ========== -->
-            <!-- onclick="openLightbox(this)" - Deschide lightbox la click -->
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <!-- Container pentru imagine cu aspect ratio 1:1 -->
-                <div class="gallery-image-wrapper">
-                    <!-- SCHIMBĂ URL-UL IMAGINII AICI: -->
-                    <!-- Exemplu: https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/profile.jpeg -->
-                    <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.08.jpeg" alt="Race Action Shot" class="gallery-image">
+        <!-- ========== SECTION 1: AMC ========== -->
+        <div class="gallery-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-car"></i>
                 </div>
-                
-                <!-- Label-ul care apare la hover -->
-                <div class="gallery-label">VMAX NO LIMITS TROPHY</div>
+                <h2 class="section-title">AMC</h2>
+                <div class="section-count">3 videos</div>
             </div>
 
-            <!-- ========== ITEM 2 - A DOUA IMAGINE ========== -->
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="gallery-image-wrapper">
-                    <!-- SCHIMBĂ URL-UL IMAGINII AICI: -->
-                    <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 00.31.57 (1).jpeg" alt="Podium Celebration" class="gallery-image">
+            <div class="gallery-grid">
+                <!-- AMC ITEM 1 -->
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.08.jpeg" alt="AMC Race 1" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">AMC Championship 2025</div>
                 </div>
-                <div class="gallery-label">Podium Celebration</div>
-            </div>
 
-            <!-- ========== ITEM 3 - A TREIA IMAGINE ========== -->
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="gallery-image-wrapper">
-                    <!-- SCHIMBĂ URL-UL IMAGINII AICI: -->
-                    <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 22.32.51.jpeg" alt="Kart Details" class="gallery-image">
+                <!-- AMC ITEM 2 -->
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 00.31.57 (1).jpeg" alt="AMC Race 2" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Podium Finish</div>
                 </div>
-                <div class="gallery-label">Kart Details</div>
-            </div>
 
-            <!-- ========== ITEM 4 - A PATRA IMAGINE ========== -->
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="gallery-image-wrapper">
-                    <!-- SCHIMBĂ URL-UL IMAGINII AICI: -->
-                    <div class="video-thumbnail" data-type="video" data-video-src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Video 2026-02-10 at 06.57.37.mp4">
-    <i class="fas fa-play"></i>
-</div>
-
+                <!-- AMC ITEM 3 -->
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 22.32.51.jpeg" alt="AMC Race 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Track Action</div>
                 </div>
-                <div class="gallery-label">Track Overview</div>
-            </div>
-
-            <!-- ========== ITEM 5 - A CINCEA IMAGINE ========== -->
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="gallery-image-wrapper">
-                    <!-- SCHIMBĂ URL-UL IMAGINII AICI: -->
-                    <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.08.jpeg" alt="Team Photo" class="gallery-image">
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.02.jpeg" alt="AMC Race 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Track Action</div>
                 </div>
-                <div class="gallery-label">Team Photo</div>
             </div>
-
-            <!-- ========== ITEM 6 - A ȘASEA IMAGINE ========== -->
-            <div class="gallery-item" onclick="openLightbox(this)">
-                <div class="gallery-image-wrapper">
-                    <!-- SCHIMBĂ URL-UL IMAGINII AICI: -->
-                    <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.08.jpeg" alt="Championship Win" class="gallery-image">
-                </div>
-                <div class="gallery-label">Championship Win</div>
-            </div>
-
         </div>
-    </div>
 
-    <!-- ========== LIGHTBOX MODAL - Fereastra mare pentru imagine ========== -->
-    <div class="lightbox" id="lightbox">
-        <div class="lightbox-content">
-            <!-- Imaginea care se va afișa în lightbox -->
-            <img src="" alt="" class="lightbox-image" id="lightboxImage">
-            <!-- Butonul de închidere -->
-            <button class="lightbox-close" onclick="closeLightbox()">
-                <i class="fas fa-times"></i>
-            </button>
+        <!-- ========== SECTION DIVIDER ========== -->
+        <div class="section-divider"></div>
+
+        <!-- ========== SECTION 2: iRACING ========== -->
+        <div class="gallery-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-gamepad"></i>
+                </div>
+                <h2 class="section-title">iRacing</h2>
+                <div class="section-count">3 videos</div>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- iRACING ITEM 1 -->
+                <a href="https://www.youtube.com/watch?v=-lOoV0rdIJU" target="_blank" rel="noopener noreferrer" class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://img.youtube.com/vi/-lOoV0rdIJU/maxresdefault.jpg" alt="iRacing Session 1" class="gallery-image">
+                        <div class="play-button-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-label">Competitive Race</div>
+                </a>
+
+                <!-- iRACING ITEM 2 -->
+                <a href="https://www.youtube.com/watch?v=Nw74qQjev1M" target="_blank" rel="noopener noreferrer" class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://img.youtube.com/vi/Nw74qQjev1M/maxresdefault.jpg" alt="iRacing Session 2" class="gallery-image">
+                        <div class="play-button-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-label">Practice Session</div>
+                </a>
+
+                <!-- iRACING ITEM 3 -->
+                <a href="https://www.youtube.com/watch?v=nbKdMEY8Hnc" target="_blank" rel="noopener noreferrer" class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://img.youtube.com/vi/nbKdMEY8Hnc/maxresdefault.jpg" alt="iRacing Session 3" class="gallery-image">
+                        <div class="play-button-overlay">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="gallery-label">Championship Round</div>
+                </a>
+            </div>
         </div>
+
+        <!-- ========== SECTION DIVIDER ========== -->
+        <div class="section-divider"></div>
+
+        <!-- ========== SECTION 3: VMAX ========== -->
+        <div class="gallery-section">
+            <div class="section-header">
+                <div class="section-icon">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h2 class="section-title">VMAX</h2>
+                <div class="section-count">3 videos</div>
+            </div>
+
+            <div class="gallery-grid">
+                <!-- VMAX ITEM 1 -->
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.08.jpeg" alt="VMAX Trophy" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">VMAX NO LIMITS TROPHY</div>
+                </div>
+
+                <!-- VMAX ITEM 2 -->
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 00.31.57 (1).jpeg" alt="VMAX Victory" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Victory Lap</div>
+                </div>
+
+                <!-- VMAX ITEM 3 -->
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 22.32.51.jpeg" alt="VMAX Competition" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Competition Moment</div>
+                </div>
+            </div>
+        </div>
+
     </div>
-
-    <!-- ========== JAVASCRIPT - Funcțiile pentru lightbox ========== -->
-    <script>
-        /**
-         * Funcția openLightbox - Deschide lightbox-ul cu imaginea
-         * @param {Element} element - Elementul gallery-item pe care s-a dat click
-         */
-        function openLightbox(element) {
-            // Găsește imaginea din elementul clickat
-            const img = element.querySelector('.gallery-image');
-            // Găsește lightbox-ul din pagină
-            const lightbox = document.getElementById('lightbox');
-            // Găsește tag-ul img din lightbox
-            const lightboxImage = document.getElementById('lightboxImage');
-            
-            // Copiază src-ul imaginii în lightbox
-            lightboxImage.src = img.src;
-            // Copiază alt-ul imaginii în lightbox
-            lightboxImage.alt = img.alt;
-            // Adaugă clasa 'active' pentru a arăta lightbox-ul
-            lightbox.classList.add('active');
-        }
-
-        /**
-         * Funcția closeLightbox - Închide lightbox-ul
-         */
-        function closeLightbox() {
-            // Găsește lightbox-ul
-            const lightbox = document.getElementById('lightbox');
-            // Elimină clasa 'active' pentru a ascunde lightbox-ul
-            lightbox.classList.remove('active');
-        }
-
-        /**
-         * Event listener - Închide lightbox la click pe fundal (în afara imaginii)
-         */
-        document.getElementById('lightbox').addEventListener('click', function(e) {
-            // Dacă click-ul e pe lightbox-ul însuși (nu pe imagine)
-            if (e.target === this) {
-                closeLightbox();
-            }
-        });
-
-        /**
-         * Event listener - Închide lightbox la apăsarea tastei Escape
-         */
-        document.addEventListener('keydown', function(e) {
-            // Dacă tasta apăsată e Escape
-            if (e.key === 'Escape') {
-                closeLightbox();
-            }
-        });
-    </script>
 </body>
 </html>
-
-
