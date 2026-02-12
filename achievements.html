@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driving skills– Vladimir Andrei | Kart Racer</title>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Back button styling */
+        .back-button-container {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+        }
+
+        .back-button {
+            background: linear-gradient(135deg, #23A7B9, #1a9fb5);
+            color: white;
+            border: none;
+            padding: 14px 32px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Roboto', sans-serif;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background: linear-gradient(135deg, #A61D1A, #8b1513);
+            transform: translateX(-8px);
+            box-shadow: 0 8px 24px rgba(35, 167, 185, 0.3);
+        }
+
+        .back-button:active {
+            transform: translateX(-4px) scale(0.98);
+        }
+
+        /* Achievements container */
+        .achievements-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
+        }
+
+        .achievements-title {
+            font-family: 'Space Mono', monospace;
+            font-size: 48px;
+            font-weight: 700;
+            color: #23A7B9;
+            text-align: center;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .achievement-detail-card {
+            background: linear-gradient(135deg, rgba(35, 167, 185, 0.1) 0%, rgba(166, 29, 26, 0.05) 100%);
+            border: 1px solid #23A7B9;
+            border-radius: 12px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .achievement-detail-card:nth-child(1) { animation-delay: 0.1s; }
+        .achievement-detail-card:nth-child(2) { animation-delay: 0.2s; }
+        .achievement-detail-card:nth-child(3) { animation-delay: 0.3s; }
+        .achievement-detail-card:nth-child(4) { animation-delay: 0.4s; }
+        .achievement-detail-card:nth-child(5) { animation-delay: 0.5s; }
+        .achievement-detail-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .achievement-detail-card:hover {
+            background: linear-gradient(135deg, rgba(35, 167, 185, 0.15) 0%, rgba(166, 29, 26, 0.1) 100%);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 32px rgba(35, 167, 185, 0.2);
+            border-color: #A61D1A;
+        }
+
+        .achievement-detail-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background: #23A7B9;
+            border-radius: 50%;
+            color: white;
+            font-size: 28px;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-detail-card:hover .achievement-detail-icon {
+            background: #A61D1A;
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        .achievement-detail-card h3 {
+            font-family: 'Space Mono', monospace;
+            font-size: 18px;
+            color: #e8e8e8;
+            margin: 0 0 12px 0;
+        }
+
+        .achievement-detail-card p {
+            color: #a0a0a0;
+            font-size: 14px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .achievements-title {
+                font-size: 32px;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Achievements Container -->
+    <div class="achievements-container">
+        <h1 class="achievements-title">Other skills</h1>
+
+        <div class="achievements-grid">
+            <div class="achievement-detail-card">
+                <div class="achievement-detail-icon">
+                    <i class="fas fa-stopwatch"></i>
+                </div>
+                <h3>Fastest Lap Record</h3>
+                <p>Set multiple fastest lap records across different tracks, demonstrating consistent speed and precision.</p>
+            </div>
+
+            <div class="achievement-detail-card">
+                <div class="achievement-detail-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Championship Contender</h3>
+                <p>Consistently ranked in top 3 throughout championship seasons with strong points accumulation.</p>
+            </div>
+
+            <div class="achievement-detail-card">
+                <div class="achievement-detail-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h3>Strategic Racing</h3>
+                <p>Mastery of race strategy, tire management, and fuel efficiency in competitive environments.</p>
+            </div>
+
+           
+
+            <div class="achievement-detail-card">
+                <div class="achievement-detail-icon">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <h3>Team Player</h3>
+                <p>Strong collaboration with pit crew and team members, contributing to overall team success.</p>
+            </div>
+
+            <div class="achievement-detail-card">
+                <div class="achievement-detail-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Continuous Improvement</h3>
+                <p>Demonstrated year-over-year improvement in lap times and competitive results.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <div class="back-button-container">
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>
