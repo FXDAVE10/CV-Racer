@@ -63,7 +63,7 @@ window.addEventListener('scroll', () => {
 // ============================================
 // MOUSE TRACKING FOR HERO IMAGE
 // ============================================
-
+/*
 const heroImageFrame = document.querySelector('.hero-image-frame');
 
 if (heroImageFrame) {
@@ -82,7 +82,7 @@ if (heroImageFrame) {
         heroImageFrame.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
     });
 }
-
+*/
 // ============================================
 // SKILL BARS ANIMATION ON SCROLL
 // ============================================
