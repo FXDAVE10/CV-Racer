@@ -6,20 +6,13 @@
     <title>Racing Gallery – Vladimir Andrei | Kart Racer</title>
     
     <!-- ========== EXTERNAL LIBRARIES ========== -->
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Link la style.css general -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- ========== CUSTOM STYLES PENTRU GALERIE ========== -->
     <style>
-        /* ========== BACK BUTTON ========== */
         .back-button-container {
             text-align: center;
             padding: 40px 20px;
@@ -49,11 +42,6 @@
             box-shadow: 0 8px 24px rgba(35, 167, 185, 0.3);
         }
 
-        .back-button:active {
-            transform: translateX(-4px) scale(0.98);
-        }
-
-        /* ========== GALLERY CONTAINER ========== */
         .gallery-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -62,7 +50,6 @@
             min-height: 100vh;
         }
 
-        /* Titlul principal */
         .gallery-main-title {
             font-family: 'Space Mono', monospace;
             font-size: 56px;
@@ -84,17 +71,11 @@
             animation: fadeInUp 0.8s ease 0.2s both;
         }
 
-        /* ========== SECTION CONTAINER ========== */
         .gallery-section {
             margin-bottom: 100px;
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        .gallery-section:nth-child(1) { animation-delay: 0.3s; }
-        .gallery-section:nth-child(2) { animation-delay: 0.5s; }
-        .gallery-section:nth-child(3) { animation-delay: 0.7s; }
-
-        /* ========== SECTION HEADER ========== */
         .section-header {
             display: flex;
             align-items: center;
@@ -111,9 +92,8 @@
             bottom: -2px;
             left: 0;
             height: 2px;
-            width: 0;
+            width: 100%;
             background: linear-gradient(90deg, #23A7B9, #A61D1A);
-            animation: expandWidth 0.8s ease forwards;
         }
 
         .section-icon {
@@ -143,44 +123,50 @@
             border: 1px solid rgba(35, 167, 185, 0.3);
         }
 
-        /* ========== GALLERY GRID ========== */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 28px;
         }
 
-        /* ========== GALLERY ITEM ========== */
         .gallery-item {
             position: relative;
             overflow: hidden;
             border-radius: 12px;
-            animation: fadeInUp 0.6s ease forwards;
             background: #1a1a1a;
             border: 2px solid #2a2a2a;
             transition: all 0.3s ease;
-            cursor: pointer;
             text-decoration: none;
             display: block;
-            group: 'item';
         }
 
-        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
-        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
-        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
-        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
-        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
-        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+        .gallery-item:hover {
+            border-color: #23A7B9;
+            box-shadow: 0 12px 32px rgba(35, 167, 185, 0.4);
+            transform: translateY(-12px);
+        }
 
-        /* ========== IMAGE WRAPPER ========== */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+        }
+
+        video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
         .gallery-image-wrapper {
             position: relative;
             width: 100%;
-            padding-bottom: 100%;
+            padding-bottom: 75%;
             overflow: hidden;
         }
 
-        /* ========== ACTUAL IMAGE ========== */
         .gallery-image {
             position: absolute;
             top: 0;
@@ -191,183 +177,83 @@
             transition: all 0.4s ease;
         }
 
-        /* ========== PLAY BUTTON OVERLAY ========== */
-        .play-button-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.3);
-            transition: all 0.3s ease;
-            z-index: 3;
-        }
-
-        /* Play button */
-        .play-button {
-            width: 80px;
-            height: 80px;
-            background: rgba(166, 29, 26, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            color: white;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(166, 29, 26, 0.5);
-        }
-
-        /* ========== HOVER EFFECTS ========== */
-        .gallery-item:hover {
-            border-color: #23A7B9;
-            box-shadow: 0 12px 32px rgba(35, 167, 185, 0.4);
-            transform: translateY(-12px);
-        }
-
         .gallery-item:hover .gallery-image {
-            transform: scale(1.12);
-            filter: brightness(1.15);
+            transform: scale(1.1);
         }
 
-        .gallery-item:hover .play-button {
-            transform: scale(1.2);
-            background: rgba(166, 29, 26, 1);
-            box-shadow: 0 16px 40px rgba(166, 29, 26, 0.8);
-        }
-
-        .gallery-item:hover .play-button-overlay {
-            background: rgba(0, 0, 0, 0.6);
-        }
-
-        /* ========== GALLERY LABEL ========== */
         .gallery-label {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(0, 0, 0, 0.95), transparent);
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.8);
             color: #23A7B9;
-            padding: 24px;
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 600;
-            transform: translateY(100%);
-            transition: all 0.3s ease;
-            z-index: 2;
             font-family: 'Roboto', sans-serif;
+            border-top: 1px solid rgba(35, 167, 185, 0.2);
         }
 
-        .gallery-item:hover .gallery-label {
-            transform: translateY(0);
-        }
-
-        /* ========== SECTION DIVIDER ========== */
         .section-divider {
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(35, 167, 185, 0.3), transparent);
             margin: 80px 0;
         }
 
-        /* ========== ANIMAȚII ========== */
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes expandWidth {
-            from {
-                width: 0;
-            }
-            to {
-                width: 100%;
-            }
-        }
-
-        /* ========== RESPONSIVE DESIGN ========== */
         @media (max-width: 768px) {
-            .gallery-main-title {
-                font-size: 36px;
-            }
-
-            .section-title {
-                font-size: 24px;
-            }
-
-            .gallery-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-
-            .section-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .section-count {
-                margin-left: 0;
-            }
-
-            .play-button {
-                width: 60px;
-                height: 60px;
-                font-size: 30px;
-            }
+            .gallery-main-title { font-size: 36px; }
+            .section-title { font-size: 24px; }
+            .gallery-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- ========== BACK BUTTON ========== -->
     <div class="back-button-container">
         <a href="index.html" class="back-button">
             <i class="fas fa-arrow-left"></i> Back to CV
         </a>
     </div>
 
-    <!-- ========== GALLERY CONTAINER ========== -->
     <div class="gallery-container">
         <h1 class="gallery-main-title">Racing Gallery</h1>
-        <p class="gallery-subtitle">Explore my racing journey across multiple platforms</p>
+        <p class="gallery-subtitle">Explore my racing journey across multiple experiences.</p>
 
         <!-- ========== SECTION 1: AMC ========== -->
         <div class="gallery-section">
             <div class="section-header">
-                <div class="section-icon">
-                    <i class="fas fa-car"></i>
-                </div>
+                <div class="section-icon"><i class="fas fa-car"></i></div>
                 <h2 class="section-title">AMC</h2>
-                <div class="section-count">3 videos</div>
+                <div class="section-count">Photos & Videos</div>
             </div>
 
             <div class="gallery-grid">
-                <!-- AMC ITEM 1 -->
+                <!-- AMC VIDEOS (New) -->
                 <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.08.jpeg" alt="AMC Race 1" class="gallery-image">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/MAH06013.MP4" type="video/mp4">
+                        </video>
                     </div>
-                    <div class="gallery-label">AMC Championship 2025</div>
+                    <div class="gallery-label">AMC Main Event</div>
                 </div>
 
-                <!-- AMC ITEM 2 -->
+                <div class="gallery-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-12%20at%2020.34.58.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="gallery-label">Outdoor Track Highlights</div>
+                </div>
+
+                <!-- ALL ORIGINAL AMC PHOTOS (Preserved) -->
                 <div class="gallery-item">
                     <div class="gallery-image-wrapper">
                         <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 00.31.57 (1).jpeg" alt="AMC Race 2" class="gallery-image">
@@ -375,116 +261,127 @@
                     <div class="gallery-label">Podium Finish</div>
                 </div>
 
-                <!-- AMC ITEM 3 -->
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 22.32.51.jpeg" alt="AMC Race 3" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">Track Action</div>
-                </div>
                 <div class="gallery-item">
                     <div class="gallery-image-wrapper">
                         <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.02.jpeg" alt="AMC Race 3" class="gallery-image">
                     </div>
                     <div class="gallery-label">Track Action</div>
                 </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/IMG-20260212-WA0035.jpg" alt="AMC Race 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Track Action</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/IMG-20260212-WA0037.jpg" alt="AMC Race 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Track Action</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/IMG-20260213-WA0004.jpg" alt="AMC Race 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Track Action</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/POZ06036.jpeg" alt="AMC Race 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Track Action</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/POZ06045.jpeg" alt="AMC Race 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Track Action</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/PSX_20260213_112435.jpg" alt="AMC Race 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Track Action</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-image-wrapper">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/file_00000000f16872438e729497dc6dd5c1.png" alt="AMC Race 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-label">Track Action</div>
+                </div>
+
+                <!-- MORE AMC VIDEOS (New) -->
+                <div class="gallery-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-11%20at%2023.59.07%20(1).mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="gallery-label">Overtaking Maneuvers</div>
+                </div>
             </div>
         </div>
 
-        <!-- ========== SECTION DIVIDER ========== -->
         <div class="section-divider"></div>
 
-        <!-- ========== SECTION 2: iRACING ========== -->
+        <!-- ========== SECTION 2: VMAX ========== -->
         <div class="gallery-section">
             <div class="section-header">
-                <div class="section-icon">
-                    <i class="fas fa-gamepad"></i>
-                </div>
-                <h2 class="section-title">iRacing</h2>
-                <div class="section-count">3 videos</div>
-            </div>
-
-            <div class="gallery-grid">
-                <!-- iRACING ITEM 1 -->
-                <a href="https://www.youtube.com/watch?v=-lOoV0rdIJU" target="_blank" rel="noopener noreferrer" class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://img.youtube.com/vi/-lOoV0rdIJU/maxresdefault.jpg" alt="iRacing Session 1" class="gallery-image">
-                        <div class="play-button-overlay">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-label">Competitive Race</div>
-                </a>
-
-                <!-- iRACING ITEM 2 -->
-                <a href="https://www.youtube.com/watch?v=Nw74qQjev1M" target="_blank" rel="noopener noreferrer" class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://img.youtube.com/vi/Nw74qQjev1M/maxresdefault.jpg" alt="iRacing Session 2" class="gallery-image">
-                        <div class="play-button-overlay">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-label">Practice Session</div>
-                </a>
-
-                <!-- iRACING ITEM 3 -->
-                <a href="https://www.youtube.com/watch?v=nbKdMEY8Hnc" target="_blank" rel="noopener noreferrer" class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://img.youtube.com/vi/nbKdMEY8Hnc/maxresdefault.jpg" alt="iRacing Session 3" class="gallery-image">
-                        <div class="play-button-overlay">
-                            <div class="play-button">
-                                <i class="fas fa-play"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="gallery-label">Championship Round</div>
-                </a>
-            </div>
-        </div>
-
-        <!-- ========== SECTION DIVIDER ========== -->
-        <div class="section-divider"></div>
-
-        <!-- ========== SECTION 3: VMAX ========== -->
-        <div class="gallery-section">
-            <div class="section-header">
-                <div class="section-icon">
-                    <i class="fas fa-trophy"></i>
-                </div>
+                <div class="section-icon"><i class="fas fa-trophy"></i></div>
                 <h2 class="section-title">VMAX</h2>
-                <div class="section-count">3 videos</div>
+                <div class="section-count">Photos & Videos</div>
             </div>
 
             <div class="gallery-grid">
-                <!-- VMAX ITEM 1 -->
+                <!-- VMAX VIDEOS (New) -->
+                <div class="gallery-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-10%20at%2006.57.37.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="gallery-label">VMAX Indoor Session</div>
+                </div>
+
+                <div class="gallery-item">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-12%20at%2020.35.06.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="gallery-label">Championship Highlights</div>
+                </div>
+
+                <!-- ORIGINAL VMAX PHOTOS (Preserved) -->
                 <div class="gallery-item">
                     <div class="gallery-image-wrapper">
                         <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.08.jpeg" alt="VMAX Trophy" class="gallery-image">
                     </div>
                     <div class="gallery-label">VMAX NO LIMITS TROPHY</div>
                 </div>
-
-                <!-- VMAX ITEM 2 -->
                 <div class="gallery-item">
                     <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 00.31.57 (1).jpeg" alt="VMAX Victory" class="gallery-image">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/PSX_20260213_111100.jpg" alt="VMAX Trophy" class="gallery-image">
                     </div>
-                    <div class="gallery-label">Victory Lap</div>
+                    <div class="gallery-label">VMAX NO LIMITS KART</div>
                 </div>
-
-                <!-- VMAX ITEM 3 -->
                 <div class="gallery-item">
                     <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 22.32.51.jpeg" alt="VMAX Competition" class="gallery-image">
+                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/PSX_20260213_111408.jpg" alt="VMAX Trophy" class="gallery-image">
                     </div>
-                    <div class="gallery-label">Competition Moment</div>
+                    <div class="gallery-label">Podium</div>
                 </div>
+              
             </div>
         </div>
+
+       
 
     </div>
 </body>
