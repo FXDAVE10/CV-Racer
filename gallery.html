@@ -10,379 +10,211 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     
     <style>
-        .back-button-container {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
-        }
+        /* General Styles & Animations */
+        body, html { margin: 0; padding: 0; background-color: #0f0f0f; }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-30px ); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
 
-        .back-button {
-            background: linear-gradient(135deg, #23A7B9, #1a9fb5);
-            color: white;
-            border: none;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-family: 'Roboto', sans-serif;
-            text-decoration: none;
-        }
+        /* Back Button */
+        .back-button-container { text-align: center; padding: 40px 20px; background: #0f0f0f; }
+        .back-button { background: #23A7B9; color: white; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-family: 'Roboto', sans-serif; display: inline-flex; align-items: center; gap: 8px; transition: all 0.3s ease; }
+        .back-button:hover { background: #A61D1A; transform: translateX(-8px); }
 
-        .back-button:hover {
-            background: linear-gradient(135deg, #A61D1A, #8b1513);
-            transform: translateX(-8px);
-            box-shadow: 0 8px 24px rgba(35, 167, 185, 0.3);
-        }
+        /* Main Gallery Container */
+        .gallery-container { max-width: 1400px; margin: 0 auto; padding: 60px 20px; min-height: 100vh; }
+        .gallery-main-title { font-family: 'Space Mono', monospace; font-size: 48px; color: #23A7B9; text-align: center; text-transform: uppercase; animation: fadeInDown 0.8s ease; }
+        .gallery-subtitle { text-align: center; color: #999; margin-bottom: 60px; font-family: 'Roboto', sans-serif; animation: fadeInUp 0.8s ease 0.2s both; }
 
-        .gallery-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, rgba(15, 15, 15, 0.95) 0%, rgba(26, 26, 26, 0.95) 100%);
-            min-height: 100vh;
-        }
-
-        .gallery-main-title {
-            font-family: 'Space Mono', monospace;
-            font-size: 56px;
-            font-weight: 700;
-            color: #23A7B9;
-            text-align: center;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            animation: fadeInDown 0.8s ease;
-        }
-
-        .gallery-subtitle {
-            text-align: center;
-            color: #999;
-            font-size: 16px;
-            margin-bottom: 80px;
-            font-family: 'Roboto', sans-serif;
-            animation: fadeInUp 0.8s ease 0.2s both;
-        }
-
-        .gallery-section {
-            margin-bottom: 100px;
-            animation: fadeInUp 0.8s ease forwards;
-        }
-
+        /* Section Styles */
+        .gallery-section { margin-bottom: 80px; }
         .section-header {
             display: flex;
+            justify-content: center; /* Center flex items */
             align-items: center;
             gap: 20px;
-            margin-bottom: 50px;
-            padding-bottom: 30px;
+            margin-bottom: 40px;
             border-bottom: 2px solid rgba(35, 167, 185, 0.3);
-            position: relative;
+            padding-bottom: 20px;
+            text-align: center; /* Center text within the container */
         }
-
-        .section-header::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            height: 2px;
-            width: 100%;
-            background: linear-gradient(90deg, #23A7B9, #A61D1A);
-        }
-
-        .section-icon {
-            font-size: 40px;
-            color: #23A7B9;
-            min-width: 50px;
-            text-align: center;
-        }
-
+        .section-icon { font-size: 36px; color: #23A7B9; }
         .section-title {
             font-family: 'Space Mono', monospace;
-            font-size: 36px;
-            font-weight: 700;
+            font-size: 32px;
             color: #23A7B9;
             text-transform: uppercase;
-            letter-spacing: 2px;
         }
-
-        .section-count {
-            margin-left: auto;
-            background: rgba(35, 167, 185, 0.1);
-            color: #23A7B9;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            border: 1px solid rgba(35, 167, 185, 0.3);
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 28px;
-        }
-
-        .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            background: #1a1a1a;
-            border: 2px solid #2a2a2a;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: block;
-        }
-
-        .gallery-item:hover {
-            border-color: #23A7B9;
-            box-shadow: 0 12px 32px rgba(35, 167, 185, 0.4);
-            transform: translateY(-12px);
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #000;
-        }
-
-        video {
-            width: 100%;
-            height: 100%;
-            display: block;
-            object-fit: cover;
-        }
-
-        .gallery-image-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 75%;
-            overflow: hidden;
-        }
-
-        .gallery-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.4s ease;
-        }
-
-        .gallery-item:hover .gallery-image {
-            transform: scale(1.1);
-        }
-
-        .gallery-label {
-            padding: 15px 20px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #23A7B9;
-            font-size: 14px;
-            font-weight: 600;
+        
+        /* NEW: Media Group Subtitle */
+        .media-group-title {
             font-family: 'Roboto', sans-serif;
-            border-top: 1px solid rgba(35, 167, 185, 0.2);
+            font-size: 22px;
+            color: #ccc;
+            margin-bottom: 30px;
+            padding-left: 10px;
+            border-left: 3px solid #A61D1A;
         }
 
-        .section-divider {
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(35, 167, 185, 0.3), transparent);
-            margin: 80px 0;
-        }
+        /* Grid & Items */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; margin-bottom: 50px; }
+        .gallery-item { background: #1a1a1a; border-radius: 12px; overflow: hidden; border: 2px solid #2a2a2a; text-decoration: none; display: block; transition: all 0.3s ease; }
+        .gallery-item:hover { border-color: #23A7B9; transform: translateY(-10px); box-shadow: 0 10px 30px rgba(35, 167, 185, 0.3); }
+        
+        .video-wrapper, .gallery-image-wrapper { position: relative; width: 100%; aspect-ratio: 16/9; background: #000; }
+        .gallery-image-wrapper { aspect-ratio: 4/3; }
+        
+        video, .gallery-image { width: 100%; height: 100%; display: block; object-fit: cover; }
+        .gallery-item:hover .gallery-image { transform: scale(1.1); transition: transform 0.4s ease; }
+        
+        .gallery-label { padding: 15px 20px; background: rgba(0, 0, 0, 0.7); color: #23A7B9; font-size: 15px; font-weight: 600; font-family: 'Roboto', sans-serif; border-top: 1px solid rgba(35, 167, 185, 0.2); }
 
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (max-width: 768px) {
-            .gallery-main-title { font-size: 36px; }
-            .section-title { font-size: 24px; }
-            .gallery-grid { grid-template-columns: 1fr; }
-        }
+        /* Lightbox */
+        .lightbox { display: none; position: fixed; z-index: 9999; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); backdrop-filter: blur(15px); justify-content: center; align-items: center; }
+        .lightbox.active { display: flex; }
+        .lightbox-content { position: relative; }
+        #lightbox-media-container img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+        .lightbox-close { position: absolute; top: -40px; right: -10px; color: white; font-size: 40px; cursor: pointer; }
+        .lightbox-caption { color: #23A7B9; margin-top: 15px; text-align: center; font-family: 'Space Mono', monospace; font-size: 18px; }
     </style>
 </head>
 <body>
+
+    <!-- Back Button -->
     <div class="back-button-container">
-        <a href="index.html" class="back-button">
-            <i class="fas fa-arrow-left"></i> Back to CV
-        </a>
+        <a href="index.html" class="back-button"><i class="fas fa-arrow-left"></i> Back to CV</a>
     </div>
 
+    <!-- Gallery -->
     <div class="gallery-container">
         <h1 class="gallery-main-title">Racing Gallery</h1>
-        <p class="gallery-subtitle">Explore my racing journey across multiple experiences.</p>
+        <p class="gallery-subtitle">A collection of moments from my journey in motorsport.</p>
 
-        <!-- ========== SECTION 1: AMC ========== -->
+        <!-- ========== SECTION 1: AMC KARTING ========== -->
         <div class="gallery-section">
             <div class="section-header">
-                <div class="section-icon"><i class="fas fa-car"></i></div>
-                <h2 class="section-title">AMC</h2>
-                <div class="section-count">Photos & Videos</div>
+                <div class="section-icon"><i class="fas fa-road"></i></div>
+                <h2 class="section-title">AMC Karting</h2>
             </div>
 
+            <!-- Videos Group -->
+            <h3 class="media-group-title">Videos</h3>
             <div class="gallery-grid">
-                <!-- AMC VIDEOS (New) -->
                 <div class="gallery-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/MAH06013.MP4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="gallery-label">AMC Main Event</div>
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/MAH06013.MP4" type="video/mp4"></video></div>
+                    <div class="gallery-label">Onboard camera during the main race</div>
                 </div>
-
                 <div class="gallery-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-12%20at%2020.34.58.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="gallery-label">Outdoor Track Highlights</div>
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-13%20at%2016.53.42.mp4" type="video/mp4"></video></div>
+                    <div class="gallery-label">Overtakes and action on the outdoor track</div>
                 </div>
+                <div class="gallery-item">
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-13%20at%2015.50.08.mp4" type="video/mp4"></video></div>
+                    <div class="gallery-label">Intense practice session</div>
+                </div>
+                <div class="gallery-item">
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-13%20at%2015.54.15.mp4" type="video/mp4"></video></div>
+                    <div class="gallery-label">Paddock atmosphere before the start</div>
+                </div>
+            </div>
 
-                <!-- ALL ORIGINAL AMC PHOTOS (Preserved) -->
+            <!-- Photos Group -->
+            <h3 class="media-group-title">Photos</h3>
+            <div class="gallery-grid">
                 <div class="gallery-item">
                     <div class="gallery-image-wrapper">
                         <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-10 at 00.31.57 (1).jpeg" alt="AMC Race 2" class="gallery-image">
                     </div>
                     <div class="gallery-label">Podium Finish</div>
                 </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.02.jpeg" alt="AMC Race 3" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">Track Action</div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/IMG-20260212-WA0035.jpg" alt="AMC Race 3" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">Track Action</div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/IMG-20260212-WA0037.jpg" alt="AMC Race 3" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">Track Action</div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/IMG-20260213-WA0004.jpg" alt="AMC Race 3" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">Track Action</div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/POZ06036.jpeg" alt="AMC Race 3" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">Track Action</div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/POZ06045.jpeg" alt="AMC Race 3" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">Track Action</div>
-                </div>
-
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/PSX_20260213_112435.jpg" alt="AMC Race 3" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">Track Action</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/file_00000000f16872438e729497dc6dd5c1.png" alt="AMC Race 3" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">Track Action</div>
-                </div>
-
-                <!-- MORE AMC VIDEOS (New) -->
-                <div class="gallery-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-11%20at%2023.59.07%20(1).mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="gallery-label">Overtaking Maneuvers</div>
-                </div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.02.jpeg" class="gallery-image"></div><div class="gallery-label">Full focus on the starting line</div></div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-13 at 16.17.07.jpeg" class="gallery-image"></div><div class="gallery-label">Wheel-to-wheel duel in a tight corner</div></div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/IMG-20260212-WA0037.jpg" class="gallery-image"></div><div class="gallery-label">At full speed on the main straight</div></div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/IMG-20260213-WA0004.jpg" class="gallery-image"></div><div class="gallery-label">A moment of relaxation in the pits</div></div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/POZ06036.jpeg" class="gallery-image"></div><div class="gallery-label">Racing gear ready for action</div></div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/POZ06045.jpeg" class="gallery-image"></div><div class="gallery-label">Action shot from the sidelines</div></div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/PSX_20260213_112435.jpg" class="gallery-image"></div><div class="gallery-label">Analyzing telemetry after the session</div></div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/file_00000000f16872438e729497dc6dd5c1.png" class="gallery-image"></div><div class="gallery-label">Planning the race strategy</div></div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.08.jpeg" class="gallery-image"></div><div class="gallery-label">An overview of the circuit</div></div>
             </div>
         </div>
 
-        <div class="section-divider"></div>
-
-        <!-- ========== SECTION 2: VMAX ========== -->
+        <!-- ========== SECTION 2: VMAX KARTING ========== -->
         <div class="gallery-section">
             <div class="section-header">
                 <div class="section-icon"><i class="fas fa-trophy"></i></div>
-                <h2 class="section-title">VMAX</h2>
-                <div class="section-count">Photos & Videos</div>
+                <h2 class="section-title">VMAX Karting</h2>
             </div>
 
+            <!-- Videos Group -->
+            <h3 class="media-group-title">Videos</h3>
             <div class="gallery-grid">
-                <!-- VMAX VIDEOS (New) -->
                 <div class="gallery-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-10%20at%2006.57.37.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="gallery-label">VMAX Indoor Session</div>
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-10%20at%2006.57.37.mp4" type="video/mp4"></video></div>
+                    <div class="gallery-label">Fast session on the indoor circuit</div>
                 </div>
+                <div class="gallery-item">
+                    <div class="video-wrapper"><video controls preload="metadata"><source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-12%20at%2020.35.06.mp4" type="video/mp4"></video></div>
+                    <div class="gallery-label">Championship highlights</div>
+                </div>
+            </div>
 
-                <div class="gallery-item">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="https://raw.githubusercontent.com/fxdave10/CV-Racer/main/WhatsApp%20Video%202026-02-12%20at%2020.35.06.mp4" type="video/mp4">
-                        </video>
-                    </div>
-                    <div class="gallery-label">Championship Highlights</div>
-                </div>
-
-                <!-- ORIGINAL VMAX PHOTOS (Preserved) -->
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-11 at 23.59.08.jpeg" alt="VMAX Trophy" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">VMAX NO LIMITS TROPHY</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/PSX_20260213_111100.jpg" alt="VMAX Trophy" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">VMAX NO LIMITS KART</div>
-                </div>
-                <div class="gallery-item">
-                    <div class="gallery-image-wrapper">
-                        <img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/PSX_20260213_111408.jpg" alt="VMAX Trophy" class="gallery-image">
-                    </div>
-                    <div class="gallery-label">Podium</div>
-                </div>
-              
+            <!-- Photos Group -->
+            <h3 class="media-group-title">Photos</h3>
+            <div class="gallery-grid">
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/PSX_20260213_111100.jpg" class="gallery-image"></div><div class="gallery-label">The VMAX No Limits championship trophy</div></div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/PSX_20260213_111408.jpg" class="gallery-image"></div><div class="gallery-label">On the top step of the podium</div></div>
+                <div class="gallery-item"><div class="gallery-image-wrapper"><img src="https://raw.githubusercontent.com/FXDAVE10/CV-Racer/main/WhatsApp Image 2026-02-13 at 15.57.28.jpeg" class="gallery-image"></div><div class="gallery-label">The joy of victory with the team</div></div>
             </div>
         </div>
-
-       
-
     </div>
+
+    <!-- Lightbox (for image viewing ) -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <span class="lightbox-close" id="lightbox-close">&times;</span>
+            <div id="lightbox-media-container"></div>
+            <div class="lightbox-caption" id="lightbox-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        const lightbox = document.getElementById('lightbox');
+        const mediaContainer = document.getElementById('lightbox-media-container');
+        const caption = document.getElementById('lightbox-caption');
+        const closeBtn = document.getElementById('lightbox-close');
+
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            // Don't activate lightbox for items containing video
+            if (item.querySelector('video')) return;
+
+            item.addEventListener('click', (e) => {
+                e.preventDefault(); // Prevent default link behavior
+                const img = item.querySelector('img');
+                if (!img) return;
+
+                const src = img.src;
+                const text = item.querySelector('.gallery-label').innerText;
+
+                mediaContainer.innerHTML = `<img src="${src}">`;
+                caption.innerText = text;
+                lightbox.classList.add('active');
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            mediaContainer.innerHTML = ''; // Clear content to free up memory
+        }
+
+        closeBtn.onclick = closeLightbox;
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) {
+                closeLightbox();
+            }
+        });
+    </script>
+
 </body>
 </html>
