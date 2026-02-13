@@ -498,7 +498,6 @@ body {
 
 .footer {
     background: var(--bg-darker);
-    border-top: 1px solid var(--border-color);
     padding: 40px 20px;
     text-align: center;
 }
@@ -656,36 +655,36 @@ body {
    STICKER STYLES - INLINE WITH TITLES
    ======================== */
 
-/* Inline sticker for section titles - SEMI-MEDIUM SIZE */
+/* Inline sticker for section titles - MEDIUM-LARGE SIZE */
 .split-title .sticker-img-1,
 .split-title .sticker-img-2 {
     vertical-align: middle;
-    width: 220px;
-    height: 220px;
+    width: 300px;           /* MÄƒrit de la 220px */
+    height: 300px;          /* MÄƒrit de la 220px */
     margin-left: 24px;
     box-shadow: none;
     filter: none;
     position: static;
     display: inline-block;
-    max-width: 200px;
-    min-width: 120px;
+    max-width: 280px;       /* Ajustat pentru vizibilitate optimÄƒ */
+    min-width: 150px;
 }
 
 @media (max-width: 768px) {
     .split-title .sticker-img-1,
     .split-title .sticker-img-2 {
-        width: 120px;
-        height: 120px;
-        min-width: 90px;
+        width: 180px;       /* MÄƒrit pentru tablete */
+        height: 180px;
+        min-width: 120px;
     }
 }
 
 @media (max-width: 480px) {
     .split-title .sticker-img-1,
     .split-title .sticker-img-2 {
-        width: 90px;
-        height: 90px;
-        min-width: 70px;
+        width: 110px;       /* Ajustat pentru mobil */
+        height: 110px;
+        min-width: 80px;
     }
 }
 
@@ -695,11 +694,11 @@ body {
 
 /* STICKER 1 - Profile Image (Top Left) */
 .sticker-1 {
-      position: absolute;
+    position: absolute;
     top: -50px;
     left: 0px;
-    width: 500px;   /* era 120px */
-    height: 500px;  /* era 120px */
+    width: 500px;   
+    height: 500px;  
     z-index: 20;
     background: transparent;
     overflow: visible;
@@ -722,11 +721,11 @@ body {
 
 /* STICKER 2 - Achievements Section (Bottom Right) */
 .sticker-2 {
- position: absolute;
+    position: absolute;
     bottom: -50px;
     right: -35px;
-    width: 490px;   /* era 100px */
-    height: 490px;  /* era 100px */
+    width: 490px;   
+    height: 490px;  
     z-index: 15;
     background: transparent;
     overflow: visible;
@@ -748,35 +747,46 @@ body {
 }
 
 /* Responsive: Mobile adjustments */
+@media (max-width: 1024px) {
+    .sticker-1 {
+        width: 350px;       /* MÄƒrit de la 300px pentru ecrane medii */
+        height: 350px;
+    }
+    .sticker-2 {
+        width: 320px;       /* MÄƒrit de la 280px pentru ecrane medii */
+        height: 320px;
+    }
+}
+
 @media (max-width: 768px) {
     .sticker-1 {
-       width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 250px;
         top: -40px;
-        left: -40px;
+        left: -20px;
     }
     
     .sticker-2 {
-       width: 280px;
-        height: 280px;
+        width: 230px;
+        height: 230px;
         bottom: -30px;
-        right: -30px;
+        right: -20px;
     }
 }
 
 @media (max-width: 480px) {
     .sticker-1 {
-       width: 120px;
-        height: 120px;
-        top: -35px;
-        left: -35px;
+        width: 140px;       /* PuÈ›in mai mare pe mobil pentru lizibilitate */
+        height: 140px;
+        top: -30px;
+        left: -10px;
     }
     
     .sticker-2 {
-       width: 110px;
-        height: 110px;
-        bottom: -25px;
-        right: -25px;
+        width: 130px;
+        height: 130px;
+        bottom: -20px;
+        right: -10px;
     }
 }
 
